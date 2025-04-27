@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC Voltage Stabilizer</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="#">DC Voltage Stabilizer</a></li>
+            <li><a href="Buck_Converter.html">Buck Converter</a></li>
+            <li><a href="LM317.html">LM317</a></li>
+            <li><a href="NE555_and_LM2596.html">NE555 and LM2596</a></li>
+            <li><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">DC Voltage Stabilizer</a></li>
+            <li class="hideOnMobile"><a href="Buck_Converter.html">Buck Converter</a></li>
+            <li class="hideOnMobile"><a href="LM317.html">LM317</a></li>
+            <li class="hideOnMobile"><a href="NE555_and_LM2596.html">NE555 and LM2596</a></li>
+            <li class="hideOnMobile"><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+            <li class="menu_button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>COMPONENTS NEEDED</h1>
+    </header>
+    <h2>Buck Converter with ESP32 for PWM Generation</h2>
+    <ul class="with_style">
+        <li>ESP32</li>
+        <li>Mosfet (IRFZ44n is used for this project)</li>
+        <li>Inductor</li>
+        <li>Capacitor</li>
+        <li>Diode</li>
+        <li>NPN Transistor(used for driving MOSFET)</li>
+        <li>Resistors(240 ohm, 1k ohm)</li>
+        <li>Potentiometer(10k ohm)</li>
+        <li>Connecting Wires</li>
+        <li>Breadboard</li>
+        <li>DC power Supply</li>
+        <li>Multimeter</li>
+    </ul>
+    <h2>Variable Voltage Regulator Using LM317</h2>
+    <ul class="with_style">
+        <li>LM317 ic</li>
+        <li>Resistor - 240 ohm</li>
+        <li>Capacitor(1 microfarad, 0.1 microfarad)</li>
+        <li>Diode</li>
+        <li>Potentiometer(10k ohm)</li>
+        <li>Connecting Wires</li>
+        <li>Breadboard</li>
+        <li>DC power Supply</li>
+        <li>Multimeter</li>
+    </ul>
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+        }
+    </script>
+
+    <footer>
+        <p>
+            &lt;&lt;&lt;&copy;EEE-A, ACGCET&gt;&gt;&gt;
+        </p>
+    </footer>
+</body>
+
+</html>

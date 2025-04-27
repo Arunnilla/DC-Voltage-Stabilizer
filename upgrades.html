@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrades and Future Improvements</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="#">DC Voltage Stabilizer</a></li>
+            <li><a href="Components.html">Components Used</a></li>
+            <li><a href="Buck_Converter.html">Buck Converter</a></li>
+            <li><a href="LM317.html">LM317</a></li>
+            <li><a href="NE555_and_LM2596.html">NE555 and LM2596</a></li>
+            <li><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">DC Voltage Stabilizer</a></li>
+            <li class="hideOnMobile"><a href="Components.html">Components Used</a></li>
+            <li class="hideOnMobile"><a href="Buck_Converter.html">Buck Converter</a></li>
+            <li class="hideOnMobile"><a href="LM317.html">LM317</a></li>
+            <li class="hideOnMobile"><a href="NE555_and_LM2596.html">NE555 and LM2596</a></li>
+            <li class="hideOnMobile"><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+            <li class="menu_button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>
+            Upgrades can be made
+        </h1>
+    </header>
+    <ul class="with_style">
+        <li>Automatic Output Voltage Control</li>
+
+        <li>Display Screen for Monitoring</li>
+
+        <li>Overvoltage and Undervoltage Protection</li>
+
+        <li>Current Sensing and Protection</li>
+
+        <li>Wireless Control via Mobile App or Web</li>
+
+        <li>Dual or Multi-Output Voltage Stabilization</li>
+
+        <li>Solar Panel Integration and MPPT Support</li>
+
+        <li>Digital PID Feedback Control</li>
+
+        <li>Compact PCB Design and Fabrication</li>
+
+        <li>High Power Handling Capability</li>
+
+
+
+    </ul>
+    <br>
+
+
+    <h2>Simulation of Buck Converter Using MATLAB</h2>
+    <div class="images">
+        <figure>
+            <img src="images/Screenshot (198).png" alt="Buck Converter">
+            <figcaption>Buck Converter using MATLAB</figcaption>
+        </figure>
+    </div>
+    <div class="images">
+        <figure>
+            <img src="images/Screenshot (197).png" alt="Buck Converter">
+            <figcaption>Graph Obtained in MATLAB</figcaption>
+        </figure>
+    </div>
+
+    <br>
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+        }
+    </script>
+
+    <footer>
+        <p>
+            &lt;&lt;&lt;&copy;EEE-A, ACGCET&gt;&gt;&gt;
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM317</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="index.html">DC Voltage Stabilizer</a></li>
+            <li><a href="Components.html">Components Used</a></li>
+            <li><a href="Buck_Converter.html">Buck Converter</a></li>
+            <li><a href="NE555_and_LM2596.html">NE555 and LM2596</a></li>
+            <li><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+        </ul>
+        <ul>
+            <li><a href="index.html">DC Voltage Stabilizer</a></li>
+            <li class="hideOnMobile"><a href="Components.html">Components Used</a></li>
+            <li class="hideOnMobile"><a href="Buck_Converter.html">Buck Converter</a></li>
+            <li class="hideOnMobile"><a href="NE555_and_LM2596.html">NE555 and LM2596</a></li>
+            <li class="hideOnMobile"><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+            <li class="menu_button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>LM317 , VOLTAGE REGULATOR IC</h1>
+    </header>
+    <h2>
+        What is LM317?
+    </h2>
+    <p>
+        LM317 is a linear voltage regulator IC that can adjust and maintain a stable output voltage between 1.25V to
+        37V, provided the input voltage is higher.
+        It is mainly used when you need a regulated, adjustable DC output in electronic circuits.
+
+        Unlike a buck converter, LM317 is a linear device — it drops extra voltage as heat (less efficient compared to
+        switching converters).
+
+    </p>
+
+    <h2>Construction (Pinout) of LM317</h2>
+    <p>
+        The LM317 IC typically comes in a TO-220 package with three pins:
+    <ol>
+        <li><strong>Adjust:</strong>To set the output voltage</li>
+        <li><strong>Output:</strong>Regulated output voltage</li>
+        <li><strong>Input:</strong>Input voltage(higher than output)</li>
+    </ol>
+    </p>
+    <h3>Basic LM317 Circuit Diagram:</h3>
+    <div class="images">
+        <center>
+            <figure>
+                <img src="Screenshot_20250427_161531~2.jpg" alt="Lm317 basic circuit">
+                <figcaption>
+                    LM317 Basic Voltage Regualtion Circuit
+                </figcaption>
+            </figure>
+        </center>
+    </div>
+
+    <p>
+        Around the LM317, we typically add:
+
+        Two resistors (R1 and R2) to set the output voltage.
+
+        Capacitors (optional but recommended) for stability (one at input and one at output).
+    </p>
+
+    <h2>Working of LM317</h2>
+    <p>
+    <h4>1. Input Voltage (Vin):</h4>
+
+    You apply a DC voltage (say 12V) to the input pin.
+
+
+
+    <h4>2. Voltage Setting using Resistors:</h4>
+
+    You connect two resistors and between the output, adjust, and ground.
+
+    The output voltage is given by:
+
+
+    Vout = 1.25V x (1 + R2/R1) + (Iadj x R2)
+
+    (Usually,Iadj is small and can be ignored.)
+
+    <h4>3. Regulation:</h4>
+
+    LM317 maintains the voltage between output and adjust pin at 1.25V.
+
+    It adjusts its internal resistance to keep the output stable even if input voltage or load changes.
+
+
+
+    <h4>4. Output Voltage (Vout):</h4>
+
+    A clean, adjustable DC voltage appears at the output pin.
+
+    </p>
+    <p>
+    <h4>Important Points:</h4>
+
+    Needs minimum dropout voltage:
+    Input must be at least 3V higher than output for proper regulation.
+    <br>
+    Thermal shutdown:
+    It has internal protection — if it overheats or draws too much current, it safely shuts down.
+    <br>
+    Efficiency:
+    LM317 is less efficient for large voltage drops because it wastes energy as heat.
+
+    </p>
+
+    <h3>prototype</h3>
+    <div class="images">
+        <center>
+            <figure>
+                <img src="images/Lm317/IMG-20250427-WA0009.jpg" alt="Lm317 basic circuit">
+                <figcaption>
+                    LM317 Basic Voltage Regualtion Circuit(max.output when input is 7.4v)
+                </figcaption>
+            </figure>
+        </center>
+    </div>
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+        }
+    </script>
+    <footer>
+        <p>
+            &lt;&lt;&lt;&copy;EEE-A, ACGCET&gt;&gt;&gt;
+        </p>
+    </footer>
+
+</body>
+
+</html>

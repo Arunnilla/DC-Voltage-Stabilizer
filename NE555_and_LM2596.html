@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NE555 and LM2596</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="index.html">DC Voltage Stabilizer</a></li>
+            <li><a href="Components.html">Components Used</a></li>
+            <li><a href="Buck_Converter.html">Buck Converter</a></li>
+            <li><a href="LM317.html">LM317</a></li>
+            <li><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+        </ul>
+        <ul>
+            <li><a href="index.html">DC Voltage Stabilizer</a></li>
+            <li class="hideOnMobile"><a href="Components.html">Components Used</a></li>
+            <li class="hideOnMobile"><a href="Buck_Converter.html">Buck Converter</a></li>
+            <li class="hideOnMobile"><a href="LM317.html">LM317</a></li>
+            <li class="hideOnMobile"><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+            <li class="menu_button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>
+            NE555 and LM2596
+        </h1>
+    </header>
+    <h2>
+        Using NE555 Timer for PWM in a Buck Converter
+    </h2>
+
+    <p>
+        The NE555 timer is a popular IC that can be used to generate PWM (Pulse Width Modulation) signals.
+        In a buck converter, we need PWM to control the switching of the transistor (MOSFET) —
+        and the duty cycle (percentage of ON time) controls the output voltage.
+
+        So: NE555 = PWM Generator → controls Buck Converter switching
+    </p>
+    <h2>How it Works:</h2>
+
+    <h3>1. NE555 configured in Astable Mode:</h3>
+
+    <p>he NE555 runs as a free-running oscillator, continuously producing a square wave (ON and OFF pulses).</p>
+
+
+
+    <h3>2. PWM Generation:</h3>
+
+    <p>By adjusting the timing resistors and capacitors, you change the duty cycle (how long ON vs OFF).
+
+        Higher duty cycle = Higher output voltage in buck converter.
+    </p>
+
+
+    <h3>3. Switch Control:</h3>
+
+    <p>The PWM output from the NE555 is connected to the gate of a MOSFET (or transistor).
+
+        The MOSFET acts like a fast electronic switch for the buck converter circuit.
+    </p>
+
+
+    <h3>4. Buck Converter Operation:</h3>
+
+    <p>When PWM signal is HIGH (ON), the MOSFET conducts, inductor stores energy.
+
+        When PWM signal is LOW (OFF), the MOSFET turns off, and the inductor supplies the load.
+
+    </p>
+    <h3>Basic Circuit Setup:</h3>
+    <p>
+        Simple NE555 PWM Buck Converter Block Diagram:
+    </p>
+    <div class="images">
+        <figure>
+            <img src="images/Screenshot (190).png" alt="buck converter using NE555 Timer">
+            <figcaption>
+                Buck Converter using NE555 Timer
+            </figcaption>
+        </figure>
+    </div>
+
+    <h3>Important Points:</h3>
+
+    <p>Frequency:
+        The NE555 must generate PWM at a frequency high enough (around 20kHz to 100kHz for practical buck converters).
+        (Too low frequency will cause large ripple.)</p>
+
+    <p>Duty Cycle Control:
+        You can add a potentiometer in the NE555 circuit to adjust the duty cycle manually — this way you can adjust
+        output voltage!</p>
+
+    <h3>Quick Formula for NE555 PWM Frequency:</h3>
+
+    <p>When in astable mode:
+
+        f = 1.44/((Ra + 2Rb) x C)
+
+        Where:
+
+        Ra and Rb are resistors,
+
+        C is the timing capacitor.
+
+    </p>
+    <h2>
+        What is LM2596?
+    </h2>
+    <p>
+        LM2596 is a DC-DC buck converter IC that can step down a higher DC input voltage to a lower regulated DC output
+        voltage.
+        It is a switching regulator (not linear like LM317), so it is highly efficient (typically 80-90%).
+
+        It's widely used in ready-made adjustable buck converter modules you find online!
+    </p>
+
+    <h3>onstruction (Internal Blocks of LM2596)</h3>
+    <p>
+    <ul>
+        <li>Inside the LM2596 IC, there are:</li>
+
+        <li>High-speed Switch (Internal transistor)</li>
+
+        <li>PWM Controller (to control duty cycle)</li>
+
+        <li>Oscillator (typically 150kHz switching frequency)</li>
+
+        <li>Feedback Circuit (to keep output voltage stable)</li>
+
+        <li>Protection Circuits (like thermal shutdown, overcurrent protection)</li>
+    </ul>
+    </p>
+    <h3>
+        External Components needed:</h3>
+    <ul class="with_style">
+        <li>Inductor</li>
+        <li>Diode</li>
+        <li>Capacitor</li>
+        <li>Resistors and Potentiometer</li>
+    </ul>
+
+    <h3>
+        Working of LM2596
+    </h3>
+    <p>
+        1. Input Voltage (Vin):
+
+        You apply a DC voltage (up to 40V) to the input pin.
+    </p>
+
+
+    <p>2. Switching Operation:
+
+        LM2596 turns its internal switch ON and OFF at high speed (150kHz).
+
+        It controls the duty cycle to adjust the amount of energy sent to the load.
+
+    </p>
+
+    <p>3. Inductor and Diode:
+
+        Inductor stores energy when the switch is ON.
+
+        Diode provides current path when the switch is OFF.
+    </p>
+
+
+    <p>4. Output Voltage (Vout):
+
+        A stable and smooth DC voltage is produced at the output.
+
+        You can adjust the output voltage (if using adjustable type) by varying a potentiometer or setting feedback
+        resistors.
+
+    </p>
+
+
+    <h3>Key Features of LM2596:</h3>
+
+    <ul class="with_style">
+        <li>Input Voltage: 4V to 40V</li>
+
+        <li>Adjustable Output Voltage: 1.23V to 37V (for adjustable version)</li>
+
+        <li>Output Current: Up to 3A</li>
+        <li>Switching Frequency: ~150kHz</li>
+        <li>High Efficiency: Up to 90%</li>
+
+        <li>Built-in Protection: Thermal shutdown, current limiting</li>
+
+    </ul>
+    <div class="images">
+        <figure>
+            <img src="images/Screenshot (196).png" alt="LM2596 IC">
+            <figcaption>LM2596 Based Buck Converter</figcaption>
+        </figure>
+    </div>
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+        }
+    </script>
+
+    <footer>
+        <p>
+            &lt;&lt;&lt;&copy;EEE-A, ACGCET&gt;&gt;&gt;
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buck Converter</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="index.html">DC Voltage Stabilizer</a></li>
+            <li><a href="Components.html">Components Used</a></li>
+            <li><a href="LM317.html">LM317</a></li>
+            <li><a href="NE555_and_LM2596.html">NE555 and LM2596</a></li>
+            <li><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+        </ul>
+        <ul>
+            <li><a href="index.html">DC Voltage Stabilizer</a></li>
+            <li class="hideOnMobile"><a href="Components.html">Components Used</a></li>
+            <li class="hideOnMobile"><a href="LM317.html">LM317</a></li>
+            <li class="hideOnMobile"><a href="NE555_and_LM2596.html">NE555 and LM2596</a></li>
+            <li class="hideOnMobile"><a href="upgrades.html">Upgrades and Future Improvements</a></li>
+            <li class="menu_button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>
+            Buck Converter
+        </h1>
+    </header>
+    <h2>
+        What is a Buck Converter?
+    </h2>
+    <p></p>
+    A buck converter is a type of DC-DC converter that steps down a higher DC voltage to a lower DC voltage efficiently.
+    It is widely used in power supplies where low voltage is needed from a higher voltage source (e.g., battery-powered
+    devices, mobile chargers, etc.).
+
+    It uses switching (not resistive drop) to regulate voltage, hence it's very efficient (often >90%).
+    </p>
+    <h2>
+        Construction of Buck Converter
+    </h2>
+    <p>
+        A basic buck converter consists of:
+
+        1. Switch (usually a MOSFET or transistor):
+
+        Turns ON and OFF rapidly to control energy flow.
+
+
+
+        2. Diode (or synchronous MOSFET):
+
+        Provides a path for inductor current when the switch is OFF.
+
+
+
+        3. Inductor (L):
+
+        Stores energy when the switch is ON and releases it when OFF.
+
+        Helps smooth the current.
+
+
+
+        4. Capacitor (C):
+
+        Filters and smoothens the output voltage.
+
+
+
+        5. Controller/Driver:
+
+        Controls the switching frequency and duty cycle.
+
+
+    </p>
+
+    <h3>Basic Buck Converter Circuit Diagram (simplified):</h3>
+    <div class="images">
+        <figure>
+            <img src="images/circuit-of-buck-converter.jpg" alt="buck converter">
+            <figcaption>
+                Buck Converter
+            </figcaption>
+        </figure>
+    </div>
+    <div class="images">
+        <figure>
+            <img src="Buck_operating.svg.png" alt="operating Modes">
+            <figcaption>
+                Operating Modes
+            </figcaption>
+        </figure>
+    </div>
+    <div class="images">
+        <figure>
+            <img src="960px-Buck_chronogram.png" alt="Model Graph">
+            <figcaption>
+                Model Graph
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        Working of Buck Converter
+    </h2>
+    <p>
+        The working is based on two main states:
+        (Switch is controlled using PWM — Pulse Width Modulation.)
+
+    <h3>1. Switch ON State (Switch Closed)</h3>
+
+    The switch connects the input voltage directly across the inductor.
+
+    The inductor current increases (linearly) and energy is stored in the inductor.
+
+    The diode is reverse-biased (OFF).
+
+    The capacitor supplies the load during switching transitions.
+
+
+    <h3>. Switch OFF State (Switch Open)</h3>
+
+    The switch disconnects .
+
+    The inductor resists sudden change in current — it releases its stored energy.
+
+    The diode becomes forward-biased (ON) and allows current to continue flowing to the load.
+
+    The capacitor continues smoothing the output.
+    </p>
+    <br>
+
+    <h3>Important Notes:</h3>
+    <p>
+        Output Voltage , Vout = D x Input voltage
+        where D is the duty cycle (ratio of ON time to total time).
+
+        D = on time / (on time + off time)
+
+        Higher D = Higher Output Voltage, but always less than Input voltage .
+    </p>
+
+    <h3>Prototype</h3>
+
+    <div class="images">
+        <figure>
+            <img src="images/buck_converter/IMG-20250427-WA0006.jpg" alt="buck converter">
+            <figcaption>
+                Prototype Buck Converter(Max. output for 7.4v input)
+            </figcaption>
+        </figure>
+    </div>
+    <div class="images">
+        <figure>
+            <img src="images/buck_converter/IMG-20250427-WA0005.jpg" alt="buck converter">
+            <figcaption>
+                Prototype Buck Converter(Min. Output for 7.4v input)
+            </figcaption>
+        </figure>
+    </div>
+
+    <h3>Code for Esp32</h3>
+    <code>
+        <p>
+        #define POTENTIOMETER_PIN 34  // GPIO36 (ADC1_CH0) <br>
+        #define PWM_PIN           18   // Any PWM-capable pin <br>
+        #define PWM_CHANNEL       0 <br>
+        #define PWM_FREQ          30000   // 30 kHz switching frequency <br>
+        #define PWM_RESOLUTION    8       // 8-bit resolution (0-255) <br>
+
+        void setup() { <br>
+        Serial.begin(115200); <br>
+
+        // Set up ADC <br>
+        analogReadResolution(12); // ESP32 default: 0-4095 <br>
+
+        // Set up PWM <br>
+        ledcSetup(PWM_CHANNEL, PWM_FREQ, PWM_RESOLUTION); <br>
+        ledcAttachPin(PWM_PIN, PWM_CHANNEL); <br>
+        } <br>
+
+        void loop() { <br>
+        int potValue = analogRead(POTENTIOMETER_PIN);  // Read potentiometer (0-4095) <br>
+        int pwmValue = map(potValue, 0, 4095, 1, 255); // Map to PWM range <br>
+        ledcWrite(PWM_CHANNEL, pwmValue);  // Output PWM <br>
+
+        // Optional serial debug <br>
+        Serial.print("Potentiometer: "); <br>
+        Serial.print(potValue); <br>
+        Serial.print(" | PWM: "); <br>
+        Serial.println(pwmValue); <br>
+
+        delay(10);  // Stability delay <br>
+        } <br>
+    </p>
+    </code>
+
+
+
+
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+        }
+    </script>
+
+    <footer>
+        <p>
+            &lt;&lt;&lt;&copy;EEE-A, ACGCET&gt;&gt;&gt;
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

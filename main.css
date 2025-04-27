@@ -1,0 +1,144 @@
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+  background: linear-gradient(rgba(70, 169, 236, 0.6), rgba(15, 76, 117, 0.6)), 
+              url('images/buck_converter/depositphotos_333017820-stock-photo-circuit-board-view-focus-blur.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+  }
+  
+.images{
+    display: inline-block;
+    border: 1px solid hsl(215, 100%, 67%);
+    margin: 5px;
+    width: 300px;
+}
+
+.images img{
+    width: 100%;
+    height: auto;
+}
+figcaption{
+    padding: 1px;
+    text-align: center;
+}
+.images:hover{
+    border:1px solid hsl(253, 83%, 50%);
+}
+
+p{
+    margin: 10px;
+    padding: 10px;
+    text-align: justify;
+}
+nav{
+    background-color: #0f4c75;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+code{
+    margin: 0 10vw;
+}
+
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.with_style{
+    list-style: circle;
+    margin: 0 10vw;
+}
+
+nav li{
+    height: 50px;
+}
+
+nav li:first-child{
+    margin-right: auto;
+}
+
+nav a{
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+nav a:hover{
+    color: #f0f0f0;
+    background-color: #4daeea;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgba(97, 183, 245, 0.219);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+}
+footer p{
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+}
+footer{
+    background-color: #0f4c75; 
+}
+
+.menu_button{
+    display: none;
+}
+@media(max-width: 800px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menu_button{
+        display: block;
+    }
+}
+
+@media(max-width: 400px){
+    .sidebar{
+        width: 100%;
+    }
+}
